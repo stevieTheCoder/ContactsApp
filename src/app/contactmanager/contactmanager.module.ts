@@ -10,11 +10,13 @@ import { ContactmanagerAppComponent } from './contactmanager-app.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { MainContentComponent } from './components/main-content/main-content.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [ContactmanagerAppComponent, ToolbarComponent, MainContentComponent, SideNavComponent],
   imports: [
     CommonModule,
+    HttpClientModule,
     ContactmanagerRoutingModule,
     FormsModule,
     MaterialModule,

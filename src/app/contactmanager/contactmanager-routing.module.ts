@@ -7,6 +7,7 @@ import { MainContentComponent } from './components/main-content/main-content.com
 const routes: Routes = [
   { path: '', component: ContactmanagerAppComponent,
   children: [
+   { path: ':id', component: MainContentComponent},
    { path: '', component: MainContentComponent}
  ] },
   { path: '**', redirectTo: ''}
