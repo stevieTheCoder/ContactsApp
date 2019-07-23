@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+const SMALL_WIDTH_BREAKPOINT = 720;
 
 @Component({
   selector: 'app-side-nav',
@@ -7,9 +12,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideNavComponent implements OnInit {
 
-  constructor() { }
+  isScreenSmall: Observable<boolean>;
 
-  ngOnInit() {
+  constructor(breakpoints: BreakpointObserver) {
+    this.isScreenSmall =
+    breakpoints.observe(`(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`)
+    .pipe(map(breakpoint => breakpoint.matches));
   }
 
+  ngOnInit() { }
 }
