@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, OnChanges } from '@angular/core';
 import { Note } from '../../models/note';
 import {MatTableDataSource} from '@angular/material/table';
 import { MatPaginator, MatSort } from '@angular/material';
@@ -8,9 +8,14 @@ import { MatPaginator, MatSort } from '@angular/material';
   templateUrl: './notes.component.html',
   styleUrls: ['./notes.component.scss']
 })
-export class NotesComponent implements OnInit {
+export class NotesComponent implements OnInit, OnChanges {
+  private pNotes: Note[];
+  @Input() set notes(notes: Note[]) {
+    if (notes) {
+      this.pNotes = notes;
+    }
+  }
 
-  @Input() notes: Note[];
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
@@ -20,9 +25,13 @@ export class NotesComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.dataSource = new MatTableDataSource<Note>(this.notes);
+    this.dataSource = new MatTableDataSource<Note>(this.pNotes);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+  }
+
+  ngOnChanges() {
+    this.dataSource = new MatTableDataSource<Note>(this.pNotes);
   }
 
   applyFilter(filterValue: string) {
