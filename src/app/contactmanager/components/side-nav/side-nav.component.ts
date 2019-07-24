@@ -18,6 +18,8 @@ export class SideNavComponent implements OnInit {
 
   isScreenSmall: Observable<boolean>;
   users: Observable<User[]>;
+  isDarkTheme = false;
+  dir = 'ltr';
 
   constructor(breakpoints: BreakpointObserver, private userService: UserService, private router: Router) {
     this.isScreenSmall =
@@ -26,6 +28,14 @@ export class SideNavComponent implements OnInit {
   }
 
   @ViewChild(MatSidenav, {static: false}) sidenav: MatSidenav;
+
+  toggleTheme()  {
+    this.isDarkTheme = !this.isDarkTheme;
+  }
+
+  toggleDirection()  {
+    this.dir = this.dir == 'ltr' ? 'rtl' : 'ltr';
+  }
 
   ngOnInit() {
     this.users = this.userService.users;
