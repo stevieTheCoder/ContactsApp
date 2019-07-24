@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../shared/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -12,16 +12,27 @@ import { MainContentComponent } from './components/main-content/main-content.com
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NotesComponent } from './components/notes/notes.component';
+import { NewContactDialogComponent } from './components/new-contact-dialog/new-contact-dialog.component';
 
 @NgModule({
-  declarations: [ContactmanagerAppComponent, ToolbarComponent, MainContentComponent, SideNavComponent, NotesComponent],
+  declarations: [
+    ContactmanagerAppComponent,
+    ToolbarComponent,
+    MainContentComponent,
+    SideNavComponent,
+    NotesComponent,
+    NewContactDialogComponent],
   imports: [
     CommonModule,
     HttpClientModule,
     ContactmanagerRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     MaterialModule,
     FlexLayoutModule
+  ],
+  entryComponents: [
+    NewContactDialogComponent
   ]
 })
 export class ContactmanagerModule { }
