@@ -11,9 +11,10 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { MainContentComponent } from './components/main-content/main-content.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NotesComponent } from './components/notes/notes.component';
 
 @NgModule({
-  declarations: [ContactmanagerAppComponent, ToolbarComponent, MainContentComponent, SideNavComponent],
+  declarations: [ContactmanagerAppComponent, ToolbarComponent, MainContentComponent, SideNavComponent, NotesComponent],
   imports: [
     CommonModule,
     HttpClientModule,
